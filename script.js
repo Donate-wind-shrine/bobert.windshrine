@@ -1,4 +1,5 @@
 const upload = document.getElementById("upload");
+const donateBtn = document.getElementById("donate");
 const offering = document.getElementById("offering");
 const shrine = document.getElementById("shrine");
 const flash = document.getElementById("flash");
@@ -22,40 +23,44 @@ upload.addEventListener("change", () => {
   const file = upload.files[0];
   if (!file) return;
 
-  // Reset state
+  // Reset
   offering.style.animation = "none";
   offering.hidden = false;
-  shrine.hidden = false;
+  donateBtn.hidden = true;
   messageBox.hidden = true;
   repeatBtn.hidden = true;
+  shrine.hidden = false;
 
-  // Load image
+  // Load preview
   offering.src = URL.createObjectURL(file);
 
-  // Wait for image to fully load
   offering.onload = () => {
-    upload.hidden = true;
-    startAnimation();
+    donateBtn.hidden = false;
   };
+});
+
+donateBtn.addEventListener("click", () => {
+  upload.hidden = true;
+  donateBtn.hidden = true;
+  startAnimation();
 });
 
 function startAnimation() {
   const shrineRect = shrine.getBoundingClientRect();
   const offeringRect = offering.getBoundingClientRect();
 
-  const shrineCenterX = shrineRect.left + shrineRect.width / 2;
-  const shrineCenterY = shrineRect.top + shrineRect.height / 2;
+  const dx =
+    shrineRect.left + shrineRect.width / 2 -
+    (offeringRect.left + offeringRect.width / 2);
 
-  const offeringCenterX = offeringRect.left + offeringRect.width / 2;
-  const offeringCenterY = offeringRect.top + offeringRect.height / 2;
-
-  const dx = shrineCenterX - offeringCenterX;
-  const dy = shrineCenterY - offeringCenterY;
+  const dy =
+    shrineRect.top + shrineRect.height / 2 -
+    (offeringRect.top + offeringRect.height / 2);
 
   offering.style.setProperty("--x", `${dx}px`);
   offering.style.setProperty("--y", `${dy}px`);
 
-  // Force reflow so animation restarts reliably
+  // Force reflow
   offering.offsetWidth;
 
   offering.style.animation = "offerToShrine 2s ease-in forwards";
@@ -84,9 +89,11 @@ function showMessage() {
 repeatBtn.addEventListener("click", () => {
   upload.value = "";
   upload.hidden = false;
-  shrine.hidden = false;
+  donateBtn.hidden = true;
   offering.hidden = true;
   offering.style.animation = "none";
   messageBox.hidden = true;
   repeatBtn.hidden = true;
+  shrine.hidden = false;
 });
+
