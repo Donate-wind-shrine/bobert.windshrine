@@ -7,16 +7,16 @@ const messageBox = document.getElementById("message");
 const repeatBtn = document.getElementById("repeat");
 
 const messages = [
-  "The wind accepts your offering.",
-  "The shrine hums with power.",
-  "A gentle breeze answers.",
-  "The winds are pleased.",
-  "Your offering vanishes into the sky.",
-  "The shrine resonates.",
-  "The air shifts quietly.",
-  "A blessing is carried away.",
-  "The wind whispers softly.",
-  "The shrine acknowledges you."
+  "thats some buzz buzz ahh shit do better",
+  "basic bee finds that quite cool i guess idk",
+  "+1 wind bee egg. fuck yeah.",
+  "+1 panda bear quest ( kill 9243 ladybugs )",
+  "bobert likes this one fr",
+  "go to freebobertnitro.github.io for free bobert shit",
+  "bat sipson ahh offer. windy bee is not pleased.",
+  "+1 royal jelly. fuck.",
+  "what the FUCK IS THAT OFFERING",
+  "honey bee is going to fucking kill yo- i mean give you cookies :>"
 ];
 
 upload.addEventListener("change", () => {
