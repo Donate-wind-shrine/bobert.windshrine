@@ -23,35 +23,34 @@ body {
 #shrine {
   width: min(60vw, 300px);
   max-height: 40vh;
+  margin-bottom: 20px;
   z-index: 1;
 }
 
+#upload {
+  margin-top: 10px;
+}
+
+#donate,
+#repeat {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 #offering {
-  position: absolute;
-  bottom: 15vh;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 15px;
   width: min(40vw, 200px);
   pointer-events: none;
   opacity: 1;
   z-index: 2;
 }
 
-#upload {
-  margin-top: 20px;
-  z-index: 3;
-}
-
 #message {
   font-size: clamp(1.2rem, 4vw, 2rem);
   text-align: center;
   margin-top: 20px;
-}
-
-#repeat {
-  margin-top: 15px;
-  padding: 10px 20px;
-  font-size: 1rem;
 }
 
 #flash {
@@ -64,14 +63,15 @@ body {
   z-index: 10;
 }
 
+/* Animation */
 @keyframes offerToShrine {
   from {
-    transform: translate(-50%, 0) rotate(0deg) scale(1);
+    transform: translate(0, 0) rotate(0deg) scale(1);
     opacity: 1;
   }
   to {
     transform:
-      translate(calc(-50% + var(--x)), var(--y))
+      translate(var(--x), var(--y))
       rotate(720deg)
       scale(0.3);
     opacity: 0;
